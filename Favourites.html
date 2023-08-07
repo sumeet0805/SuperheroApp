@@ -4,40 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourites</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script defer src="./assets/favourite.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
    
 </head>
 <body>
-    <div class="container">
-        <div class="column">
-            <div style="background-color: bisque;">
-                <h1>SuperHero Favourite Page</h1>
-                <h3>Powered by MARVEL</h3>
-            </div>
-            <a href="./index.html">Homepage</a>
-            <div class="needpopulate">
-                <h3>List of Your Favourite SuperHeroes</h3>
-                <ul class="autocomplete-box"></ul>
-            </div>
+     
+    <div class=" sticky-top">
+
+        <div class="d-flex  justify-content-between flex-column flex-md-row bg-slate-200  p-6 w-full sticky-top  ">
+            <a href="./index.html" class="font-bold ">Homepage</a>
+            <h1 class="font-bold text-2xl  " >FAVOURITE SUPER<span class="text-red-600">HEROES</span></h1>
+           
         </div>
+  </div>
+
+  <div class="needpopulate max-w-full  d-flex justify-content-center ">
+           
+    <ul class="autocomplete-box max-w-[600px] mt-2 mb-[70px]"></ul>
+</div>
     </div>
     <div class="template" hidden>
         <ul>
             <!-- ---------------------Li Template--------------------- -->
-            <li class="d-flex justify-content-between align-items-center list" data-id="" data-image-url=""
-                style="border-width: 1px;border-color: black;border: solid;">
-                <div>
-                    <img src="" alt="" onerror="this.onerror=null; this.src='./assets/images/search.png'" />
+            <li class="shadow-lg grid sm:grid-cols-2 grid-cols-1 list mt-4 " data-id="" data-image-url=""
+             >
+                <div class="  min-h-full  p-2  mt-6">
+                    <img src=""  class="bg-danger object-contain-fit  rounded-3 m-auto " alt="" onerror="this.onerror=null; this.src='./assets/images/search.png'" />
                     <!-- Name -->
-                    <a></a>
-                    <button class="fav-btn">Remove from Favourite</button>
-                    <button class="btn-success">Click to View Details</button>
+                    </div>
+                    <div class="d-flex  flex-column justify-content-around min-h-[150px]  ">
+                    <a class=" text-center text-md text-blue-700 font-bold font-bold "></a>
+                    <button class="fav-btn border-danger border-1 p-2 mx-4 hover:bg-red-600 hover:text-white transition duration-300">Remove from Favourite</button>
+                    <button class="btn-success rounded-0 p-2 btn btn-md mx-4 bg-red-600 border-1 border-danger hover:bg-transparent hover:text-black  ">Click to View Details</button>
                 </div>
                 <!-- Heart Icon -->
-                <i class=""></i>
+                
             </li>
         </ul>
     </div>
+
+    <footer class=" shadow mt-8 dark:bg-gray-800 position-fixed w-full bottom-0 ">
+        <div class="w-full mx-auto  p-2 md:flex md:items-center md:justify-between text-white font-bold">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-white-400 text-uppercase"> Super Hero Application
+            </span>
+            <span class="text-sm text-gray-500 sm:text-center dark:text-white-400"> Powered By Marvel
+            </span>
+        </div>
+    </footer>
+     
 </body>
 </html>

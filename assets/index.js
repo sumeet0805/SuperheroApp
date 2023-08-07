@@ -18,7 +18,21 @@ class Superhero{
     this.series =series
     }
 }
+let isLoaded=false;
+loader=document.getElementById("loader_el");
+if(!isLoaded){
+
+	 console.log(loader)
+	 loader.classList.remove("d-none")
+	 loader.classList.add("d-block")
+	 console.log(loader)
+
+	console.log(isLoaded)
+	
+
+}
 async function checkurl(){
+
     try {
 		const url = "https://superhero-hunter-app-mini-server.onrender.com";
 		const response = await fetch(url);
@@ -43,7 +57,7 @@ const fetchallsuperheros=async()=>{
         number=1;
         superheroes=superheroList.map((Superhero)=>{
             const suggestion = template.cloneNode(true);
-            const name = suggestion.querySelector("div a");
+            const name = suggestion.querySelector("div span");
 					const image = suggestion.querySelector("div img");
 					const favouriteBtn = suggestion.querySelector(".fav-btn");
 					suggestion.querySelector(".btn-success").onclick=function(){
@@ -91,6 +105,8 @@ const fetchallsuperheros=async()=>{
 				suggestionBox.append(...superheroes);
 				UL.style.visibility = "visible";
 				//flag = "found";
+				loader.classList.remove("d-block")
+				loader.classList.add("d-none")
 
     }catch(e){
         console.log(e);
@@ -98,14 +114,17 @@ const fetchallsuperheros=async()=>{
 }
 
 async function searchandpaste(){
+	
     try{
         const value=textbox.value;
+		console.log(value)
         const half="https://gateway.marvel.com/v1/public/characters?nameStartsWith=";
         const second="&ts=1&apikey=25bc25fa856241618e736a13eecea19c&hash=a2f15b5149ba0539a0b5b6e71d79db78"
         const url1=half+value+second;
         const response = await fetch(url1);
         let data=await response.json();
         data=data.data;
+		
         suggestionBox.querySelectorAll("li").forEach((li) => {
             li.remove();
         });
@@ -113,7 +132,7 @@ async function searchandpaste(){
         number=1;
         superheroes=superheroList.map((Superhero)=>{
             const suggestion = template.cloneNode(true);
-            const name = suggestion.querySelector("div a");
+            const name = suggestion.querySelector("div div div span");
 					const image = suggestion.querySelector("div img");
 					const favouriteBtn = suggestion.querySelector(".fav-btn");
 					suggestion.querySelector(".btn-success").onclick=function(){
@@ -162,8 +181,11 @@ async function searchandpaste(){
 				suggestionBox.append(...superheroes);
 				UL.style.visibility = "visible";
 				//flag = "found";
+			
 
     }catch(e){
+		loader.classList.remove("d-block")
+		loader.classList.add("d-none")
         console.log(e);
     }
 }
